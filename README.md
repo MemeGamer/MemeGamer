@@ -11,6 +11,8 @@
   <a href="https://www.instagram.com/who_me_v/" title="Instagram"><img src="assets/icons/instagram.png" width="32" height="32" alt="Instagram"></a>
 </p>
 
+<img align="right" src="koi/koi.gif" width="200" alt="A gold pixel-art koi, redrawn every night from my public GitHub activity by git-koi">
+
 I build immersive apps for headsets and the browser in Unity and WebXR. I also make the tools around them: computer vision that reads people and poses, and AI tooling that lets agents work inside 3D software. Earlier I built IoT sensors, browser games and gesture interfaces, and I still enjoy anything that turns a camera or a sensor into input.
 
 ## Selected work
