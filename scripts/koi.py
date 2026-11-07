@@ -5,10 +5,12 @@ GH_TOKEN=... GH_USER=MemeGamer python scripts/koi.py   ->  koi/pond.gif   (needs
   size     lifetime public contributions grow the koi: fry, juvenile, young, adult
   food     two daily pellets plus one per public contribution in the last 7 days (max 8); the koi eats each
   water    ripple lines sway and twinkle; pellets land with a splash ring; eating sends out bubbles
+  colour   the koi is recoloured from its languages: top language = patches, 2nd = fins, 3rd = body sheen
 
 Everything is drawn on the pond's 240x80 pixel grid and scaled 4x with nearest-neighbour, and every
 motion is periodic over the loop, so the GIF repeats without a jump. Idea after git-koi (MIT).
 """
+import colorsys
 import datetime as dt
 import json
 import math
@@ -28,6 +30,68 @@ PELLET_DARK = (124, 76, 30)
 SHADOW = (6, 38, 46, 120)
 
 
+# ------------------------------------------------------------------ colour
+# One koi-friendly base colour per language (tuned to read on the teal pond). Anything not listed
+# falls back to GitHub's own language colour.
+LANG_PALETTE = {
+    "C#": "#2fa043", "Python": "#3b7bd4", "JavaScript": "#f2c12e", "TypeScript": "#3178c6",
+    "CSS": "#7a4fd1", "SCSS": "#d4559a", "HTML": "#e8562a", "C": "#6b7a8f", "C++": "#e24b7d",
+    "ShaderLab": "#2ab0a8", "HLSL": "#2ab0a8", "Java": "#d08a2c", "Kotlin": "#a97bff", "Swift": "#f05138",
+    "Go": "#29beb0", "Rust": "#dea584", "Shell": "#7bd043", "Jupyter Notebook": "#f37726", "Dart": "#00b4ab",
+}
+KOHAKU = ["#f63406", "#d3b3ed", "#eedaf5"]      # the sprite's own colours, used when there are no languages
+
+
+def _hsv(hex_colour):
+    h = hex_colour.lstrip("#")
+    return colorsys.rgb_to_hsv(*(int(h[i:i + 2], 16) / 255 for i in (0, 2, 4)))
+
+
+def _rgb(h, s, v):
+    return tuple(round(c * 255) for c in colorsys.hsv_to_rgb(h % 1, max(0, min(1, s)), max(0, min(1, v))))
+
+
+def recolour(img, patch, fin, sheen):
+    """Swap the koi's colour classes for language colours, keeping each pixel's own light and shade."""
+    ph, ps, pv = _hsv(patch)
+    fh, fs, _ = _hsv(fin)
+    bh, bs, _ = _hsv(sheen)
+    lut = {}
+    out = img.copy()
+    data = list(out.get_flattened_data() if hasattr(out, "get_flattened_data") else out.getdata())
+    for i, (r, g, b, a) in enumerate(data):
+        if not a:
+            continue
+        key = (r, g, b)
+        if key not in lut:
+            h, s_, v = colorsys.rgb_to_hsv(r / 255, g / 255, b / 255)
+            warm = h < 0.08 or h > 0.92
+            if v < 0.12:                                   # eyes
+                new = key
+            elif warm and s_ >= 0.45:                      # patches (incl. their dark outline)
+                new = _rgb(ph, ps * min(1, s_ / 0.9), min(1, max(pv, 0.55) * v / 0.96))
+            elif warm:                                     # soft patch edges blending into the body
+                new = _rgb(ph, ps * s_, v)
+            elif s_ >= 0.17:                               # fins and tail
+                new = _rgb(fh, (0.2 + 0.45 * (s_ - 0.17)) * min(1, fs / 0.5), v)   # soft, even pastel
+            else:                                          # the pale body, with a faint sheen
+                new = _rgb(fh if s_ > 0.09 else bh, 0.1 if s_ > 0.09 else min(0.09, bs * 0.12 + 0.02), v)
+            lut[key] = new
+        data[i] = lut[key] + (a,)
+    out.putdata(data)
+    return out
+
+
+def koi_colours(langs):
+    """Top three languages -> (patch, fin, sheen) colours; fewer languages reuse the top ones."""
+    if not langs:
+        return KOHAKU
+    cols = [LANG_PALETTE.get(name, colour or "#f63406") for name, colour in langs[:3]]
+    while len(cols) < 3:
+        cols.append(cols[-1])
+    return cols
+
+
 # ------------------------------------------------------------------ data
 def activity(user, token):
     def gql(q):
@@ -37,7 +101,17 @@ def activity(user, token):
         if body.get("errors"):
             raise SystemExit(body["errors"])
         return body["data"]["user"]
-    years = gql(f'{{ user(login: "{user}") {{ contributionsCollection {{ contributionYears }} }} }}')["contributionsCollection"]["contributionYears"]
+    first = gql(f'{{ user(login: "{user}") {{ contributionsCollection {{ contributionYears }} '
+                f'repositories(ownerAffiliations: OWNER, isFork: false, privacy: PUBLIC, first: 100) {{ nodes {{ '
+                f'languages(first: 10, orderBy: {{field: SIZE, direction: DESC}}) {{ edges {{ size node {{ name color }} }} }} }} }} }} }}')
+    years = first["contributionsCollection"]["contributionYears"]
+    size, colour = {}, {}
+    for repo in first["repositories"]["nodes"]:
+        for e in repo["languages"]["edges"]:
+            n = e["node"]["name"]
+            size[n] = size.get(n, 0) + e["size"]
+            colour[n] = e["node"]["color"]
+    langs = [(n, colour[n]) for n in sorted(size, key=size.get, reverse=True)]
     parts = " ".join(f'y{y}: contributionsCollection(from: "{y}-01-01T00:00:00Z", to: "{y}-12-31T23:59:59Z") '
                      f'{{ contributionCalendar {{ totalContributions }} }}' for y in years)
     per = gql(f'{{ user(login: "{user}") {{ {parts} recent: contributionsCollection {{ contributionCalendar '
@@ -46,7 +120,7 @@ def activity(user, token):
     days = [d for w in per["recent"]["contributionCalendar"]["weeks"] for d in w["contributionDays"]]
     today = dt.date.today()
     week = sum(d["contributionCount"] for d in days if 0 < (today - dt.date.fromisoformat(d["date"])).days <= 7)
-    return lifetime, week
+    return lifetime, week, langs
 
 
 def stage_of(lifetime):
@@ -57,8 +131,8 @@ def stage_of(lifetime):
 
 
 # ------------------------------------------------------------------ sprites
-def load_frames(path, s):
-    sheet = Image.open(path).convert("RGBA")
+def load_frames(path, s, colours):
+    sheet = recolour(Image.open(path).convert("RGBA"), *colours)
     frames = []
     for i in range(sheet.width // CELL_W):
         cell = sheet.crop((i * CELL_W, 0, (i + 1) * CELL_W, CELL_H))
@@ -120,11 +194,13 @@ def main():
     token = os.environ.get("GH_TOKEN") or os.environ.get("GITHUB_TOKEN")
     if os.environ.get("KOI_LIFETIME"):            # offline preview: KOI_LIFETIME=600 KOI_WEEK=5
         lifetime, week = int(os.environ["KOI_LIFETIME"]), int(os.environ.get("KOI_WEEK", "0"))
+        langs = [(n.strip(), None) for n in os.environ.get("KOI_LANGS", "").split(",") if n.strip()]
     else:
-        lifetime, week = activity(user, token)
+        lifetime, week, langs = activity(user, token)
+    patch, fin, sheen = koi_colours(langs)
     s, stage = stage_of(lifetime)
-    swim, eat = load_frames("assets/koi-sprites.png", s)
-    tsheet = Image.open("assets/koi-turn.png").convert("RGBA")
+    swim, eat = load_frames("assets/koi-sprites.png", s, (patch, fin, sheen))
+    tsheet = recolour(Image.open("assets/koi-turn.png").convert("RGBA"), patch, fin, sheen)
     tc = tsheet.height
     turns = [tsheet.crop((i * tc, 0, (i + 1) * tc, tc)) for i in range(tsheet.width // tc)]
     if s != 1.0:
@@ -215,7 +291,7 @@ def main():
     gif = [b.quantize(palette=pal, dither=Image.Dither.NONE) for b in big]
     os.makedirs("koi", exist_ok=True)
     gif[0].save("koi/pond.gif", save_all=True, append_images=gif[1:], duration=FRAME_MS, loop=0, optimize=True, disposal=1)
-    print(f"koi: {stage} (lifetime {lifetime} contributions), {n} pellets from {week} contributions in the last 7 days, "
+    print(f"koi: {stage}, colours {[n for n, _ in langs[:3]] or 'kohaku'} -> {patch} {fin} {sheen}, (lifetime {lifetime} contributions), {n} pellets from {week} contributions in the last 7 days, "
           f"{len(gif)} frames -> koi/pond.gif ({os.path.getsize('koi/pond.gif') // 1024} KB)")
 
 
