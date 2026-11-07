@@ -60,3 +60,38 @@ q = out.convert("RGB").quantize(colors=20, method=Image.Quantize.FASTOCTREE, dit
 q.putalpha(a)
 q.save(OUT)
 print(f"{OUT}: {COLS * ROWS} frames of {CELL_W}x{CELL_H}, scale {scale:.3f}")
+
+
+# ---------------------------------------------------------------- the U-turn (8 frames, right -> up -> left)
+TURN_SRC, TURN_OUT, TURN_CELL = "assets/src/koi-turn-raw.png", "assets/koi-turn.png", 52
+timg = np.array(Image.open(TURN_SRC).convert("RGB")).astype(np.int16)
+TH, TW = timg.shape[:2]
+tmag = np.abs(timg - np.array([255, 0, 255])).sum(axis=2) < 150
+talpha = (~tmag).astype(np.uint8)
+tcw, tch = TW // 4, TH // 2
+tcells = []
+for r in range(2):
+    for c in range(4):
+        a = talpha[r * tch:(r + 1) * tch, c * tcw:(c + 1) * tcw].copy()
+        rgb = timg[r * tch:(r + 1) * tch, c * tcw:(c + 1) * tcw]
+        n, lab, stats, cents = cv2.connectedComponentsWithStats(a, connectivity=8)
+        big = 1 + int(np.argmax(stats[1:, cv2.CC_STAT_AREA]))
+        a = (lab == big).astype(np.uint8)                       # drop stray specks
+        ys, xs = np.nonzero(a)
+        tcells.append((rgb, a, xs.mean(), ys.mean(), stats[big, cv2.CC_STAT_WIDTH]))
+tscale = ADULT_LEN / tcells[0][4] * (cells[1][4] / cells[1][4])   # frame 1 is the straight koi
+tout = Image.new("RGBA", (TURN_CELL * 8, TURN_CELL), (0, 0, 0, 0))
+for i, (rgb, a, cx, cy, w) in enumerate(tcells):
+    sw, sh = round(rgb.shape[1] * tscale), round(rgb.shape[0] * tscale)
+    small_rgb = Image.fromarray((rgb.clip(0, 255) * a[..., None]).astype(np.uint8)).resize((sw, sh), Image.BOX)
+    A = np.array(Image.fromarray(a * 255).resize((sw, sh), Image.BOX)).astype(np.float32)
+    C = np.array(small_rgb).astype(np.float32) / np.maximum(A[..., None] / 255, 1e-3)
+    fr = Image.fromarray(np.dstack([C.clip(0, 255).astype(np.uint8), ((A >= 110) * 255).astype(np.uint8)]), "RGBA")
+    cell = Image.new("RGBA", (TURN_CELL, TURN_CELL), (0, 0, 0, 0))
+    cell.paste(fr, (round(TURN_CELL / 2 - cx * tscale), round(TURN_CELL / 2 - cy * tscale)), fr)
+    tout.alpha_composite(cell, (i * TURN_CELL, 0))
+ta = tout.getchannel("A")
+tq = tout.convert("RGB").quantize(colors=20, method=Image.Quantize.FASTOCTREE, dither=Image.Dither.NONE).convert("RGB")
+tq.putalpha(ta)
+tq.save(TURN_OUT)
+print(f"{TURN_OUT}: 8 turn frames of {TURN_CELL}x{TURN_CELL}, scale {tscale:.3f}")

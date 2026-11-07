@@ -85,29 +85,33 @@ def ring(img, cx, cy, r, colour):
 
 
 # ------------------------------------------------------------------ motion
-def path(t, half_len):
-    """Body centre, facing (+1 right / -1 left) and the horizontal squash k (turns) at frame t."""
+X0, X1 = 74, 166            # body centre at the two ends of each pass
+LOW, HIGH, R = 47, 33, 7    # swim right in the lower lane, left in the upper lane; turn radius
+TURN = 0.09                 # share of the loop spent in each U-turn
+
+
+def path(t):
+    """(x, y, face, turn_frame): body centre, facing +1/-1 on a pass, or the U-turn frame 0..7 (None on a pass)."""
     u = (t % T) / T
-    x0, x1 = 72, 168
-    turn = 0.05                                   # share of the loop spent turning at each end
-    if u < 0.5 - turn:                            # swim right
-        f = u / (0.5 - turn)
-        x, face, k = x0 + (x1 - x0) * (0.5 - 0.5 * math.cos(math.pi * f)), 1, 1.0
-    elif u < 0.5:                                 # turn at the right end
-        f = (u - (0.5 - turn)) / turn
-        x, face, k = x1, 1 if f < 0.5 else -1, abs(math.cos(math.pi * f))
-    elif u < 1 - turn:                            # swim left
-        f = (u - 0.5) / (0.5 - turn)
-        x, face, k = x1 - (x1 - x0) * (0.5 - 0.5 * math.cos(math.pi * f)), -1, 1.0
-    else:                                         # turn at the left end
-        f = (u - (1 - turn)) / turn
-        x, face, k = x0, -1 if f < 0.5 else 1, abs(math.cos(math.pi * f))
-    y = 40 + 9 * math.sin(2 * math.pi * u * 2)
-    return x, y, face, max(k, 0.08)
+    ease = lambda f: 0.75 * f + 0.25 * (0.5 - 0.5 * math.cos(math.pi * f))
+    half = 0.5 - TURN
+    if u < half:                                   # swim right, lower lane
+        f = u / half
+        return X0 + (X1 - X0) * ease(f), LOW + 2.5 * math.sin(2 * math.pi * f), 1, None
+    if u < 0.5:                                    # U-turn at the right end: up and round to the upper lane
+        f = (u - half) / TURN
+        a = -math.pi / 2 + math.pi * f             # from below the centre, round the right side, to above it
+        return X1 + R * math.cos(a), (LOW + HIGH) / 2 - R * math.sin(a) * ((LOW - HIGH) / (2 * R)), 0, min(7, int(f * 8))
+    if u < 0.5 + half:                             # swim left, upper lane
+        f = (u - 0.5) / half
+        return X1 - (X1 - X0) * ease(f), HIGH - 2.5 * math.sin(2 * math.pi * f), -1, None
+    f = (u - 0.5 - half) / TURN                    # U-turn at the left end: down and round to the lower lane
+    a = math.pi / 2 + math.pi * f
+    return X0 + R * math.cos(a), (LOW + HIGH) / 2 - R * math.sin(a) * ((LOW - HIGH) / (2 * R)), 0, min(7, int(f * 8)) + 8
 
 
 def head_at(t, half_len):
-    x, y, face, _ = path(t, half_len)
+    x, y, face, _ = path(t)
     return x + face * half_len, y
 
 
@@ -120,6 +124,12 @@ def main():
         lifetime, week = activity(user, token)
     s, stage = stage_of(lifetime)
     swim, eat = load_frames("assets/koi-sprites.png", s)
+    tsheet = Image.open("assets/koi-turn.png").convert("RGBA")
+    tc = tsheet.height
+    turns = [tsheet.crop((i * tc, 0, (i + 1) * tc, tc)) for i in range(tsheet.width // tc)]
+    if s != 1.0:
+        turns = [f.resize((max(2, round(tc * s)), max(2, round(tc * s))), Image.NEAREST) for f in turns]
+    turns = turns + [f.transpose(Image.ROTATE_180) for f in turns]
     head_dx = round(HEAD_X * s)                   # head tip, measured from the cell's left edge
     cell_w, cell_h = swim[0].size
     half_len = round(23 * s)
@@ -129,8 +139,9 @@ def main():
     # food: pellets on the koi's path, half on each pass, each dropped ~2.3 s before the koi reaches it
     n = min(8, 2 + week)                          # two daily pellets, plus one per contribution this week
     hits = []
-    right = [int(T * (0.08 + 0.34 * (i + 1) / ((n + 1) // 2 + 1))) for i in range((n + 1) // 2)]
-    left = [int(T * (0.58 + 0.34 * (i + 1) / (n // 2 + 1))) for i in range(n // 2)]
+    half = 0.5 - TURN
+    right = [int(T * half * (0.15 + 0.7 * (i + 1) / ((n + 1) // 2 + 1))) for i in range((n + 1) // 2)]
+    left = [int(T * (0.5 + half * (0.15 + 0.7 * (i + 1) / (n // 2 + 1)))) for i in range(n // 2)]
     for th in right + left:
         hx, hy = head_at(th, half_len)
         hits.append((th, round(hx), round(hy)))
@@ -161,24 +172,25 @@ def main():
                     for dx, dy, c in ((0, 0, PELLET), (1, 0, PELLET), (0, 1, PELLET_DARK), (1, 1, PELLET_DARK)):
                         px[hx + dx, hy + dy] = c + (255,)
         # the koi
-        x, y, face, k = path(t, half_len)
-        near = [((t - th) % T) for (th, _, _) in hits]
-        eating = [d for d in near if d < 8 or d > T - 7]
-        if eating:
-            d = eating[0] if eating[0] < 8 else eating[0] - T          # -6 .. 7 around the bite
-            sprite = eat[0 if d < -3 else 1 if d < 0 else 2 if d < 4 else 3]
+        x, y, face, turn = path(t)
+        if turn is not None:                                            # a real U-turn sprite, centred on the body
+            sprite = turns[turn]
+            sw, sh = sprite.size
+            ox, oy = round(x) - sw // 2, round(y) - sh // 2
         else:
-            sprite = swim[(t // 3) % 4]
-        if face < 0:
-            sprite = sprite.transpose(Image.FLIP_LEFT_RIGHT)
-        if k < 0.999:                                                   # squash through the turn
-            sprite = sprite.resize((max(2, round(cell_w * k)), cell_h), Image.NEAREST)
-        sw, sh = sprite.size
-        hx_in = round(head_dx * sw / cell_w) if face > 0 else sw - round(head_dx * sw / cell_w)
-        ox, oy = round(x + face * half_len) - hx_in, round(y) - sh // 2
-        if k < 0.999:
-            ox = round(x) - sw // 2
-        img.alpha_composite(shadow_of(sprite), dest=(ox + 2, oy + 3)) if ox + 2 >= 0 else None
+            near = [((t - th) % T) for (th, _, _) in hits]
+            eating = [d for d in near if d < 8 or d > T - 7]
+            if eating:
+                d = eating[0] if eating[0] < 8 else eating[0] - T      # -6 .. 7 around the bite
+                sprite = eat[0 if d < -3 else 1 if d < 0 else 2 if d < 4 else 3]
+            else:
+                sprite = swim[(t // 3) % 4]
+            if face < 0:
+                sprite = sprite.transpose(Image.FLIP_LEFT_RIGHT)
+            sw, sh = sprite.size
+            hx_in = head_dx if face > 0 else sw - head_dx
+            ox, oy = round(x + face * half_len) - hx_in, round(y) - sh // 2
+        img.alpha_composite(shadow_of(sprite), dest=(max(0, ox + 2), max(0, oy + 3)), source=(max(0, -(ox + 2)), max(0, -(oy + 3))))
         img.alpha_composite(sprite, dest=(max(0, ox), max(0, oy)), source=(max(0, -ox), max(0, -oy)))
         # bubbles after each bite
         for (th, hx, hy) in hits:
