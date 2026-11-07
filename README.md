@@ -34,24 +34,6 @@ I build immersive apps for headsets and the browser in Unity and WebXR. I also m
 
 ## Stack
 
-<table>
-  <tr>
-    <td width="36%" valign="middle">
-      <a href="https://memegamer.github.io/MemeGamer/rack.html">
-        <picture>
-          <source media="(prefers-color-scheme: dark)" srcset="assets/rack-dark.svg">
-          <img alt="Six game cartridges standing in a dock, one per area of the stack" src="assets/rack-light.svg" width="100%">
-        </picture>
-      </a>
-    </td>
-    <td width="64%" valign="middle">
-      Six cartridges, one per area: XR and 3D, languages, vision, web and cloud, design, hardware.
-      <br><br>
-      <a href="https://memegamer.github.io/MemeGamer/rack.html">Open the live figure</a> and hover a cartridge to pull it from the dock.
-    </td>
-  </tr>
-</table>
-
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="assets/stack-dark.svg">
   <img alt="Tech stack. XR and 3D: Unity, Meta Quest, WebXR, Blender. Languages: C#, C++, C, Python, JavaScript. AI and vision: MediaPipe, OpenCV, TensorFlow. Web and cloud: HTML, CSS, .NET, Firebase, Google Cloud, AWS, Netlify, MySQL. Design: Figma, Photoshop, Illustrator, After Effects, Premiere Pro. Hardware: Arduino, Espressif." src="assets/stack-light.svg" width="100%">
@@ -63,7 +45,7 @@ I build immersive apps for headsets and the browser in Unity and WebXR. I also m
 |---|---|
 | Computer vision | [AirCanvas](https://github.com/MemeGamer/AirCanvas), [real-time sign language detection](https://github.com/MemeGamer/Realtime_SignLangageDetection), [YOLO object detection](https://github.com/MemeGamer/RealTime_ObjectDetection_Yolo), [hand gesture recognition in JS](https://github.com/MemeGamer/Hand_gestureRecognition_JS) |
 | IoT and embedded | [Weather station](https://github.com/MemeGamer/Weather_Station_IOT), [pollution detection on NodeMCU](https://github.com/MemeGamer/PollutionDetectio_IOT_NodeMCU), [gesture magic wand on Nano 33 BLE Sense](https://github.com/MemeGamer/MagicWand_nano_ble33_sense) |
-| Unity and WebGL games | [Ludo Online](https://github.com/MemeGamer/LudoOnlineNetlify), [Poker Online](https://github.com/MemeGamer/PokerOnline), [Unity GET and POST requests](https://github.com/MemeGamer/GetNPostRequestUnity) |
+| Unity | [Unity GET and POST requests](https://github.com/MemeGamer/GetNPostRequestUnity) |
 
 ## On GitHub
 
