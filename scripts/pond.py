@@ -13,7 +13,7 @@ src = sys.argv[1] if len(sys.argv) > 1 else "koi/koi.gif"
 bg_path = sys.argv[2] if len(sys.argv) > 2 else "assets/pond.png"
 out = sys.argv[3] if len(sys.argv) > 3 else "koi/pond.gif"
 
-OUT_W = 960            # final strip width; height follows the pond's aspect
+OUT_W = 960            # final strip width: the pond is a 240x80 pixel grid, so each pond pixel is 4px
 FISH_FRAC = 0.30       # the fish's length as a share of the strip width
 
 koi = Image.open(src)
@@ -35,7 +35,7 @@ box = (max(0, box[0] - m), max(0, box[1] - m), min(frames[0].width, box[2] + m),
 fw, fh = box[2] - box[0], box[3] - box[1]
 
 bg = Image.open(bg_path).convert("RGBA")
-bg = bg.resize((OUT_W, round(bg.height * OUT_W / bg.width)), Image.LANCZOS)
+bg = bg.resize((OUT_W, round(bg.height * OUT_W / bg.width)), Image.NEAREST)  # keep pond pixels square and crisp
 scale = max(1, round(OUT_W * FISH_FRAC / fw))       # integer scale keeps the pixels square
 sw, sh = fw * scale, fh * scale
 ox, oy = (bg.width - sw) // 2, (bg.height - sh) // 2
