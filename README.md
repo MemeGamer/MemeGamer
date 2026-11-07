@@ -43,9 +43,9 @@ I build immersive apps for headsets and the browser in Unity and WebXR. I also m
 
 | Area | Projects |
 |---|---|
-| Computer vision | [AirCanvas](https://github.com/MemeGamer/AirCanvas), [real-time sign language detection](https://github.com/MemeGamer/Realtime_SignLangageDetection), [YOLO object detection](https://github.com/MemeGamer/RealTime_ObjectDetection_Yolo), [hand gesture recognition in JS](https://github.com/MemeGamer/Hand_gestureRecognition_JS) |
-| IoT and embedded | [Weather station](https://github.com/MemeGamer/Weather_Station_IOT), [pollution detection on NodeMCU](https://github.com/MemeGamer/PollutionDetectio_IOT_NodeMCU), [gesture magic wand on Nano 33 BLE Sense](https://github.com/MemeGamer/MagicWand_nano_ble33_sense) |
-| Unity | [Unity GET and POST requests](https://github.com/MemeGamer/GetNPostRequestUnity) |
+| Computer vision | [Webcam dataset creator](https://github.com/MemeGamer/webcam-dataset-creator), [hand sign dataset builder](https://github.com/MemeGamer/hand-sign-dataset-builder), [AirCanvas](https://github.com/MemeGamer/air-canvas), [real-time sign language detection](https://github.com/MemeGamer/realtime-sign-language-detection), [YOLO object detection](https://github.com/MemeGamer/yolo-realtime-object-detection), [hand gesture recognition in JS](https://github.com/MemeGamer/hand-gesture-recognition-js) |
+| IoT and embedded | [Weather station](https://github.com/MemeGamer/nodemcu-weather-station), [pollution detection on NodeMCU](https://github.com/MemeGamer/nodemcu-air-pollution-monitor), [gesture magic wand on Nano 33 BLE Sense](https://github.com/MemeGamer/magic-wand-nano33-ble) |
+| Unity | [2D bird adventure](https://github.com/MemeGamer/unity-2d-bird-adventure), [2D player controller](https://github.com/MemeGamer/unity-2d-player-controller), [JSON GET and POST](https://github.com/MemeGamer/unity-json-get-post), [FPS with JSON sync](https://github.com/MemeGamer/unity-fps-json-sync) |
 
 ## On GitHub
 
