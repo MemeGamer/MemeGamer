@@ -33,12 +33,7 @@ SHADOW = (6, 38, 46, 120)
 # ------------------------------------------------------------------ colour
 # One koi-friendly base colour per language (tuned to read on the teal pond). Anything not listed
 # falls back to GitHub's own language colour.
-LANG_PALETTE = {
-    "C#": "#2fa043", "Python": "#3b7bd4", "JavaScript": "#f2c12e", "TypeScript": "#3178c6",
-    "CSS": "#7a4fd1", "SCSS": "#d4559a", "HTML": "#e8562a", "C": "#6b7a8f", "C++": "#e24b7d",
-    "ShaderLab": "#2ab0a8", "HLSL": "#2ab0a8", "Java": "#d08a2c", "Kotlin": "#a97bff", "Swift": "#f05138",
-    "Go": "#29beb0", "Rust": "#dea584", "Shell": "#7bd043", "Jupyter Notebook": "#f37726", "Dart": "#00b4ab",
-}
+LANG_PALETTE = json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "koi-palette.json"), encoding="utf-8"))["languages"]
 KOHAKU = ["#f63406", "#d3b3ed", "#eedaf5"]      # the sprite's own colours, used when there are no languages
 
 

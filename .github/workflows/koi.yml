@@ -6,7 +6,7 @@ on:
     - cron: "20 0 * * *"   # just after midnight UTC, so the koi reflects the day that just ended
   workflow_dispatch:
   push:
-    paths: [.github/workflows/koi.yml, scripts/koi.py, assets/pond.png, assets/koi-sprites.png, assets/koi-turn.png]
+    paths: [.github/workflows/koi.yml, scripts/koi.py, scripts/koi-palette.json, assets/pond.png, assets/koi-sprites.png, assets/koi-turn.png]
 
 permissions:
   contents: write

@@ -8,45 +8,53 @@
 <text x="40" y="188" font-size="17" fill="#59636e">stars</text>
 <text x="230" y="162" font-size="46" font-weight="700" fill="#1f2328" letter-spacing="-1">6</text>
 <text x="230" y="188" font-size="17" fill="#59636e">followers</text>
-<line x1="460" y1="190" x2="860" y2="190" stroke="#d1d9e0"/>
-<line x1="460.0" y1="190" x2="460.0" y2="195" stroke="#d1d9e0"/>
-<text x="460.0" y="212" font-size="14" fill="#59636e" text-anchor="middle">2017</text>
-<line x1="504.4" y1="190" x2="504.4" y2="195" stroke="#d1d9e0"/>
-<line x1="548.9" y1="190" x2="548.9" y2="195" stroke="#d1d9e0"/>
-<text x="548.9" y="212" font-size="14" fill="#59636e" text-anchor="middle">2019</text>
-<line x1="593.3" y1="190" x2="593.3" y2="195" stroke="#d1d9e0"/>
-<line x1="637.8" y1="190" x2="637.8" y2="195" stroke="#d1d9e0"/>
-<text x="637.8" y="212" font-size="14" fill="#59636e" text-anchor="middle">2021</text>
-<line x1="682.2" y1="190" x2="682.2" y2="195" stroke="#d1d9e0"/>
-<line x1="726.7" y1="190" x2="726.7" y2="195" stroke="#d1d9e0"/>
-<text x="726.7" y="212" font-size="14" fill="#59636e" text-anchor="middle">2023</text>
-<line x1="771.1" y1="190" x2="771.1" y2="195" stroke="#d1d9e0"/>
-<line x1="815.6" y1="190" x2="815.6" y2="195" stroke="#d1d9e0"/>
-<text x="815.6" y="212" font-size="14" fill="#59636e" text-anchor="middle">2025</text>
-<line x1="860.0" y1="190" x2="860.0" y2="195" stroke="#d1d9e0"/>
-<text x="860.0" y="212" font-size="14" fill="#59636e" text-anchor="middle">2026</text>
-<path d="M460.0 190.0L504.4 190.0L548.9 190.0L593.3 126.4L637.8 50.0L682.2 151.8L726.7 190.0L771.1 177.3L815.6 177.3L860.0 177.3" fill="none" stroke="#c4511f" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"/>
-<circle cx="593.3" cy="126.4" r="2.4" fill="#c4511f"/>
-<circle cx="637.8" cy="50.0" r="2.4" fill="#c4511f"/>
-<circle cx="682.2" cy="151.8" r="2.4" fill="#c4511f"/>
-<circle cx="771.1" cy="177.3" r="2.4" fill="#c4511f"/>
-<circle cx="815.6" cy="177.3" r="2.4" fill="#c4511f"/>
-<circle cx="860.0" cy="177.3" r="2.4" fill="#c4511f"/>
-<text x="460" y="26" font-size="16" fill="#59636e">new public repositories per year</text>
-<line x1="900.0" y1="44" x2="1114.7" y2="44" stroke="#1f2328" stroke-width="3" stroke-linecap="round" opacity="1"/>
-<line x1="1117.7" y1="44" x2="1132.3" y2="44" stroke="#59636e" stroke-width="3" stroke-linecap="round" opacity="0.86"/>
-<line x1="1135.3" y1="44" x2="1146.5" y2="44" stroke="#59636e" stroke-width="3" stroke-linecap="round" opacity="0.72"/>
-<line x1="1149.5" y1="44" x2="1151.5" y2="44" stroke="#59636e" stroke-width="3" stroke-linecap="round" opacity="0.58"/>
-<line x1="1154.5" y1="44" x2="1156.5" y2="44" stroke="#59636e" stroke-width="3" stroke-linecap="round" opacity="0.43999999999999995"/>
-<text x="900" y="82" font-size="18" fill="#1f2328">C#</text>
-<text x="1160" y="82" font-size="18" fill="#59636e" text-anchor="end">83.7%</text>
-<text x="900" y="110" font-size="18" fill="#1f2328">Python</text>
-<text x="1160" y="110" font-size="18" fill="#59636e" text-anchor="end">6.8%</text>
-<text x="900" y="138" font-size="18" fill="#1f2328">JavaScript</text>
-<text x="1160" y="138" font-size="18" fill="#59636e" text-anchor="end">5.5%</text>
-<text x="900" y="166" font-size="18" fill="#1f2328">CSS</text>
+<line x1="440" y1="190" x2="800" y2="190" stroke="#d1d9e0"/>
+<line x1="440.0" y1="190" x2="440.0" y2="195" stroke="#d1d9e0"/>
+<text x="440.0" y="212" font-size="14" fill="#59636e" text-anchor="middle">2017</text>
+<line x1="480.0" y1="190" x2="480.0" y2="195" stroke="#d1d9e0"/>
+<line x1="520.0" y1="190" x2="520.0" y2="195" stroke="#d1d9e0"/>
+<text x="520.0" y="212" font-size="14" fill="#59636e" text-anchor="middle">2019</text>
+<line x1="560.0" y1="190" x2="560.0" y2="195" stroke="#d1d9e0"/>
+<line x1="600.0" y1="190" x2="600.0" y2="195" stroke="#d1d9e0"/>
+<text x="600.0" y="212" font-size="14" fill="#59636e" text-anchor="middle">2021</text>
+<line x1="640.0" y1="190" x2="640.0" y2="195" stroke="#d1d9e0"/>
+<line x1="680.0" y1="190" x2="680.0" y2="195" stroke="#d1d9e0"/>
+<text x="680.0" y="212" font-size="14" fill="#59636e" text-anchor="middle">2023</text>
+<line x1="720.0" y1="190" x2="720.0" y2="195" stroke="#d1d9e0"/>
+<line x1="760.0" y1="190" x2="760.0" y2="195" stroke="#d1d9e0"/>
+<text x="760.0" y="212" font-size="14" fill="#59636e" text-anchor="middle">2025</text>
+<line x1="800.0" y1="190" x2="800.0" y2="195" stroke="#d1d9e0"/>
+<text x="800.0" y="212" font-size="14" fill="#59636e" text-anchor="middle">2026</text>
+<path d="M440.0 190.0L480.0 190.0L520.0 190.0L560.0 126.4L600.0 50.0L640.0 151.8L680.0 190.0L720.0 177.3L760.0 177.3L800.0 177.3" fill="none" stroke="#c4511f" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="560.0" cy="126.4" r="2.4" fill="#c4511f"/>
+<circle cx="600.0" cy="50.0" r="2.4" fill="#c4511f"/>
+<circle cx="640.0" cy="151.8" r="2.4" fill="#c4511f"/>
+<circle cx="720.0" cy="177.3" r="2.4" fill="#c4511f"/>
+<circle cx="760.0" cy="177.3" r="2.4" fill="#c4511f"/>
+<circle cx="800.0" cy="177.3" r="2.4" fill="#c4511f"/>
+<text x="440" y="26" font-size="16" fill="#59636e">new public repositories per year</text>
+<line x1="850.0" y1="44" x2="1106.3" y2="44" stroke="#2fa043" stroke-width="4" stroke-linecap="round"/>
+<line x1="1110.3" y1="44" x2="1128.8" y2="44" stroke="#3b7bd4" stroke-width="4" stroke-linecap="round"/>
+<line x1="1132.8" y1="44" x2="1146.5" y2="44" stroke="#f2c12e" stroke-width="4" stroke-linecap="round"/>
+<line x1="1150.5" y1="44" x2="1153.5" y2="44" stroke="#7a4fd1" stroke-width="4" stroke-linecap="round"/>
+<line x1="1157.5" y1="44" x2="1160.5" y2="44" stroke="#d4559a" stroke-width="4" stroke-linecap="round"/>
+<rect x="850" y="69" width="14" height="14" rx="3" fill="#2fa043"/>
+<text x="872" y="82" font-size="18" fill="#1f2328">C#</text>
+<text x="990" y="82" font-size="14" fill="#59636e">koi patches</text>
+<text x="1160" y="82" font-size="18" fill="#59636e" text-anchor="end">83.6%</text>
+<rect x="850" y="97" width="14" height="14" rx="3" fill="#3b7bd4"/>
+<text x="872" y="110" font-size="18" fill="#1f2328">Python</text>
+<text x="990" y="110" font-size="14" fill="#59636e">koi fins</text>
+<text x="1160" y="110" font-size="18" fill="#59636e" text-anchor="end">6.9%</text>
+<rect x="850" y="125" width="14" height="14" rx="3" fill="#f2c12e"/>
+<text x="872" y="138" font-size="18" fill="#1f2328">JavaScript</text>
+<text x="990" y="138" font-size="14" fill="#59636e">koi body sheen</text>
+<text x="1160" y="138" font-size="18" fill="#59636e" text-anchor="end">5.4%</text>
+<rect x="850" y="153" width="14" height="14" rx="3" fill="#7a4fd1"/>
+<text x="872" y="166" font-size="18" fill="#1f2328">CSS</text>
 <text x="1160" y="166" font-size="18" fill="#59636e" text-anchor="end">1.8%</text>
-<text x="900" y="194" font-size="18" fill="#1f2328">SCSS</text>
+<rect x="850" y="181" width="14" height="14" rx="3" fill="#d4559a"/>
+<text x="872" y="194" font-size="18" fill="#1f2328">SCSS</text>
 <text x="1160" y="194" font-size="18" fill="#59636e" text-anchor="end">0.7%</text>
-<text x="900" y="216" font-size="15" fill="#59636e">languages by code size, updated 2026-11-07</text></g>
+<text x="850" y="216" font-size="15" fill="#59636e">koi colour per language, updated 2026-11-07</text></g>
 </svg>

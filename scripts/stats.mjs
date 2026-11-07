@@ -1,6 +1,6 @@
 // Self-hosted GitHub stats card (light + dark SVG). No dependencies; Node 18+.
 // GH_TOKEN=<token> GH_USER=<login> node scripts/stats.mjs   ->  assets/stats-light.svg, assets/stats-dark.svg
-import { writeFileSync } from "node:fs";
+import { readFileSync, writeFileSync } from "node:fs";
 import { dirname, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -15,7 +15,7 @@ const query = `query($login: String!) {
     createdAt
     repositories(ownerAffiliations: OWNER, isFork: false, privacy: PUBLIC, first: 100) {
       totalCount
-      nodes { stargazerCount createdAt languages(first: 10, orderBy: {field: SIZE, direction: DESC}) { edges { size node { name } } } }
+      nodes { stargazerCount createdAt languages(first: 10, orderBy: {field: SIZE, direction: DESC}) { edges { size node { name color } } } }
     }
   }
 }`;
@@ -34,10 +34,11 @@ const years = Array.from({ length: y1 - y0 + 1 }, (_, i) => y0 + i);
 const perYear = years.map((y) => repos.filter((r) => new Date(r.createdAt).getUTCFullYear() === y).length);
 const age = y1 - y0;
 const SKIP = new Set(["ShaderLab", "HLSL", "Makefile", "Batchfile", "Dockerfile"]);
-const bytes = {};
-for (const r of repos) for (const e of r.languages.edges) if (!SKIP.has(e.node.name)) bytes[e.node.name] = (bytes[e.node.name] || 0) + e.size;
+const bytes = {}, ghColour = {};
+const KOI = JSON.parse(readFileSync(resolve(ROOT, "scripts", "koi-palette.json"), "utf8"));
+for (const r of repos) for (const e of r.languages.edges) if (!SKIP.has(e.node.name)) { bytes[e.node.name] = (bytes[e.node.name] || 0) + e.size; ghColour[e.node.name] = e.node.color; }
 const total = Object.values(bytes).reduce((a, b) => a + b, 0) || 1;
-const langs = Object.entries(bytes).sort((a, b) => b[1] - a[1]).slice(0, 5).map(([n, b]) => [n, (b / total) * 100]);
+const langs = Object.entries(bytes).sort((a, b) => b[1] - a[1]).slice(0, 5).map(([n, b]) => [n, (b / total) * 100, KOI.languages[n] || ghColour[n] || "#8b949e"]);
 
 const THEME = {
   light: { fg: "#1f2328", muted: "#59636e", line: "#d1d9e0", accent: "#c4511f" },
@@ -59,7 +60,7 @@ function card(t) {
     o.push(`<text x="${x}" y="${y + 26}" font-size="17" fill="${c.muted}">${label}</text>`);
   });
   // new repositories per year, as one hairline (the accent), with year ticks on a baseline
-  const gx = 460, gw = 400, gy = 40, gh = 150, max = Math.max(1, ...perYear);
+  const gx = 440, gw = 360, gy = 40, gh = 150, max = Math.max(1, ...perYear);
   const pts = perYear.map((v, i) => [gx + (i / Math.max(1, perYear.length - 1)) * gw, gy + gh - (v / max) * (gh - 10)]);
   const d = pts.map((p, i) => `${i ? "L" : "M"}${p[0].toFixed(1)} ${p[1].toFixed(1)}`).join("");
   o.push(`<line x1="${gx}" y1="${gy + gh}" x2="${gx + gw}" y2="${gy + gh}" stroke="${c.line}"/>`);
@@ -71,19 +72,21 @@ function card(t) {
   pts.forEach(([x, y], i) => { if (perYear[i]) o.push(`<circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="2.4" fill="${c.accent}"/>`); });
   o.push(`<text x="${gx}" y="${gy - 14}" font-size="16" fill="${c.muted}">new public repositories per year</text>`);
   // languages: name + share, a single thin rule split by share (no filled track)
-  const lx = 900, lw = 260;
+  const lx = 850, lw = 310;
   let cx = lx;
-  langs.forEach(([, p], i) => {
-    const w = Math.max(2, (p / 100) * lw - 3);
-    o.push(`<line x1="${cx.toFixed(1)}" y1="44" x2="${(cx + w).toFixed(1)}" y2="44" stroke="${i === 0 ? c.fg : c.muted}" stroke-width="3" stroke-linecap="round" opacity="${1 - i * 0.14}"/>`);
-    cx += w + 3;
+  langs.forEach(([, p, col]) => {
+    const w = Math.max(3, (p / 100) * lw - 3);
+    o.push(`<line x1="${cx.toFixed(1)}" y1="44" x2="${(cx + w).toFixed(1)}" y2="44" stroke="${col}" stroke-width="4" stroke-linecap="round"/>`);
+    cx += w + 4;
   });
-  langs.forEach(([n, p], i) => {
+  langs.forEach(([n, p, col], i) => {
     const y = 82 + i * 28;
-    o.push(`<text x="${lx}" y="${y}" font-size="18" fill="${c.fg}">${n}</text>`);
+    o.push(`<rect x="${lx}" y="${y - 13}" width="14" height="14" rx="3" fill="${col}"/>`);
+    o.push(`<text x="${lx + 22}" y="${y}" font-size="18" fill="${c.fg}">${n}</text>`);
+    if (i < 3) o.push(`<text x="${lx + 140}" y="${y}" font-size="14" fill="${c.muted}">koi ${KOI.roles[i]}</text>`);
     o.push(`<text x="${lx + lw}" y="${y}" font-size="18" fill="${c.muted}" text-anchor="end">${p.toFixed(1)}%</text>`);
   });
-  o.push(`<text x="${lx}" y="${gy + gh + 26}" font-size="15" fill="${c.muted}">languages by code size, updated ${today}</text>`);
+  o.push(`<text x="${lx}" y="${gy + gh + 26}" font-size="15" fill="${c.muted}">koi colour per language, updated ${today}</text>`);
   return `<svg xmlns="http://www.w3.org/2000/svg" width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" role="img" aria-label="GitHub stats for ${USER}">
 <title>GitHub stats for ${USER}</title>
 <g font-family="${FONT}">${o.join("\n")}</g>
