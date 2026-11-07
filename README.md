@@ -72,8 +72,8 @@ I build immersive apps for headsets and the browser in Unity and WebXR. I also m
   <img alt="GitHub stats: years on GitHub, public repositories, stars, followers, new public repositories per year, and languages by code size" src="assets/stats-light.svg" width="100%">
 </picture>
 
-<a href="https://github.com/yalongwastaken/git-koi"><img src="koi/pond.gif" width="100%" alt="A pixel-art koi swimming in a pond with lily pads, lotus flowers and floating leaves"></a>
+<a href="scripts/koi.py"><img src="koi/pond.gif" width="100%" alt="A pixel-art kohaku koi swimming and eating food pellets in a pond with lily pads, lotus flowers and floating leaves"></a>
 
-<sub>My koi is redrawn every night from my public GitHub activity by <a href="https://github.com/yalongwastaken/git-koi">git-koi</a>, then placed in its pond. It grows as the activity does.</sub>
+<sub>My koi pond, redrawn every night from my public GitHub activity: the koi grows with my lifetime contributions and gets two food pellets a day, plus one for every public contribution this week. Pixel art sprites, drawn by <a href="scripts/koi.py">scripts/koi.py</a>; idea after <a href="https://github.com/yalongwastaken/git-koi">git-koi</a>.</sub>
 
 <sub>Every image here lives in this repository. The stats card is regenerated daily by a GitHub Action (<code>scripts/stats.mjs</code>), so nothing depends on an outside service.</sub>

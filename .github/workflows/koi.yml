@@ -1,14 +1,12 @@
-# git-koi (https://github.com/yalongwastaken/git-koi, MIT): a pixel-art koi drawn from public GitHub activity.
-# Pinned to the v1.0.2 commit rather than the moving @v1 tag.
+# Our koi pond (scripts/koi.py): a pixel-art koi that swims, feeds and grows with public GitHub activity.
 name: Koi
 
 on:
   schedule:
-    # Just after midnight UTC, so the koi shows the day that just ended.
-    - cron: "20 0 * * *"
+    - cron: "20 0 * * *"   # just after midnight UTC, so the koi reflects the day that just ended
   workflow_dispatch:
   push:
-    paths: [.github/workflows/koi.yml, scripts/pond.py, assets/pond.png]
+    paths: [.github/workflows/koi.yml, scripts/koi.py, assets/pond.png, assets/koi-sprites.png]
 
 permissions:
   contents: write
@@ -20,27 +18,22 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: yalongwastaken/git-koi@7305e9b1fadee6f43d3b4fa543a25d4cde79856e # v1.0.2
-        with:
-          body: gold
-          output-dir: koi
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-      - name: Put the koi in its pond
+      - name: Draw the koi pond
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_USER: ${{ github.repository_owner }}
         run: |
           pip install --quiet pillow
-          python scripts/pond.py koi/koi.gif assets/pond.png koi/pond.gif
-      - name: Commit the koi if it changed
-        shell: bash
+          python scripts/koi.py
+      - name: Commit the pond if it changed
         run: |
-          git add koi/koi.gif koi/pond.gif
-          if git diff --cached --quiet; then
-            echo "The koi is unchanged; nothing to commit."
-            exit 0
-          fi
+          git add koi/pond.gif
+          if git diff --cached --quiet; then echo "unchanged"; exit 0; fi
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git commit --quiet --message "koi: draw the day's koi"
+          git commit --quiet --message "koi: redraw the pond"
           git pull --quiet --rebase origin main
           git push --quiet
