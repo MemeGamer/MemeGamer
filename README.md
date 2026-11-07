@@ -44,7 +44,7 @@ I build immersive apps for headsets and the browser in Unity and WebXR. I also m
 | Area | Projects |
 |---|---|
 | Computer vision | [Webcam dataset creator](https://github.com/MemeGamer/webcam-dataset-creator), [hand sign dataset builder](https://github.com/MemeGamer/hand-sign-dataset-builder), [AirCanvas](https://github.com/MemeGamer/air-canvas), [real-time sign language detection](https://github.com/MemeGamer/realtime-sign-language-detection), [YOLO object detection](https://github.com/MemeGamer/yolo-realtime-object-detection), [hand gesture recognition in JS](https://github.com/MemeGamer/hand-gesture-recognition-js) |
-| IoT and embedded | [Weather station](https://github.com/MemeGamer/nodemcu-weather-station), [pollution detection on NodeMCU](https://github.com/MemeGamer/nodemcu-air-pollution-monitor), [gesture magic wand on Nano 33 BLE Sense](https://github.com/MemeGamer/magic-wand-nano33-ble) |
+| IoT and embedded | [Weather station](https://github.com/MemeGamer/nodemcu-weather-station), [NodeMCU sensor monitor with ThingSpeak and SMS](https://github.com/MemeGamer/nodemcu-air-pollution-monitor), [gesture magic wand on Nano 33 BLE Sense](https://github.com/MemeGamer/magic-wand-nano33-ble) |
 | Unity | [2D bird adventure](https://github.com/MemeGamer/unity-2d-bird-adventure), [2D player controller](https://github.com/MemeGamer/unity-2d-player-controller), [JSON GET and POST](https://github.com/MemeGamer/unity-json-get-post), [FPS with JSON sync](https://github.com/MemeGamer/unity-fps-json-sync) |
 
 ## On GitHub
