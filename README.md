@@ -24,10 +24,10 @@ I build immersive apps for headsets and the browser in Unity and WebXR. I also m
       <br><br><code>Python</code> <code>Blender</code> <code>MCP</code> <code>MediaPipe</code>
     </td>
     <td width="50%" valign="top">
-      <a href="https://aremojibooth.netlify.app/"><img src="assets/ar-booth.jpg" alt="Illustration of a laptop webcam tracking a raised hand, an emoji over the face, a 3-2-1 countdown and a printed photo with a QR code" width="100%"></a>
-      <h3><a href="https://github.com/MemeGamer/AR_Emoji_Photo_Bhooth">AR Emoji Photo Booth</a></h3>
-      A browser photo booth: raise a hand to start the countdown, swipe to change the emoji tracked on your face, then download the photo from a QR code. <a href="https://aremojibooth.netlify.app/">Try it live</a>.
-      <br><br><code>JavaScript</code> <code>MediaPipe</code> <code>WebRTC</code>
+      <a href="https://github.com/MemeGamer/git-koi-pixel"><img src="assets/git-koi-pixel.png" alt="A pixel-art koi pond with lily pads and lotus flowers, above a strip of the koi U-turn sprite frames" width="100%"></a>
+      <h3><a href="https://github.com/MemeGamer/git-koi-pixel">git-koi-pixel</a></h3>
+      A pixel-art koi pond for GitHub profiles. The koi swims, eats, turns and grows with your public activity, and wears the colours of your languages. It ships as a GitHub Action with its own sprite sheets, and the koi further down this page is drawn with it.
+      <br><br><code>Python</code> <code>GitHub Actions</code> <code>Pixel art</code> <code>Pillow</code>
     </td>
   </tr>
 </table>
