@@ -1,30 +1,75 @@
-# 💫 About Me:
-👋 Hi, I’m @VarunVP<br>👀 I’m interested in Game Development, IOT, Machin Learning,AI, and Computer Vision<br>🌱 I’m currently learning Game Development in Unity and also learning Computer Vision<br>💞️ I’m looking to collaborate on Computer Vision, Unity Game Projects<br>📷 How to reach me , Hit me Up on my Insta below<br>🌍 Or you can check out my portfolio website https://varunvp.netlify.app/<br>
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="assets/hero-dark.svg">
+  <img alt="Varun VP. Spatial computing and XR developer. An isometric bench with an XR headset, a dev board, a tripod camera and a posed mannequin on a turntable." src="assets/hero-light.svg" width="100%">
+</picture>
 
+<p>
+  <a href="https://varunvp.netlify.app/"><b>Portfolio</b></a>&nbsp;&nbsp;&nbsp;&nbsp;
+  <a href="https://www.linkedin.com/in/varun-vp-444015182">LinkedIn</a>&nbsp;&nbsp;&nbsp;&nbsp;
+  <a href="https://x.com/VarunVP17">X</a>&nbsp;&nbsp;&nbsp;&nbsp;
+  <a href="https://www.youtube.com/channel/UCd6HAibCbJAzMgVRkc-sNlg">YouTube</a>&nbsp;&nbsp;&nbsp;&nbsp;
+  <a href="https://www.instagram.com/who_me_v/">Instagram</a>
+</p>
 
-## 🌐 Socials:
-[![Discord](https://img.shields.io/badge/Discord-%237289DA.svg?logo=discord&logoColor=white)](htttps://discord.gg/https://discordapp.com/users/512275191347281921/) [![Facebook](https://img.shields.io/badge/Facebook-%231877F2.svg?logo=Facebook&logoColor=white)](https://facebook.com/https://www.facebook.com/VarunVP313/) [![Instagram](https://img.shields.io/badge/Instagram-%23E4405F.svg?logo=Instagram&logoColor=white)](https://www.instagram.com/who_me_v/) [![LinkedIn](https://img.shields.io/badge/LinkedIn-%230077B5.svg?logo=linkedin&logoColor=white)](https://linkedin.com/in/https://www.linkedin.com/in/varun-vp-444015182) [![Twitter](https://img.shields.io/badge/Twitter-%231DA1F2.svg?logo=Twitter&logoColor=white)](https://twitter.com/https://twitter.com/VarunVP17) [![YouTube](https://img.shields.io/badge/YouTube-%23FF0000.svg?logo=YouTube&logoColor=white)](https://youtube.com/c/https://www.youtube.com/channel/UCd6HAibCbJAzMgVRkc-sNlg) 
- 
-# 💻 Tech Stack:
-![Unity](https://drive.google.com/uc?export=download&id=1Zu-0HHm0YF_PXMOGihPWE8ie20gIzNsu) ![C#](https://img.shields.io/badge/c%23-%23239120.svg?style=for-the-badge&logo=c-sharp&logoColor=white) ![C](https://img.shields.io/badge/c-%2300599C.svg?style=for-the-badge&logo=c&logoColor=white) ![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E) ![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white) ![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white) ![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54) ![AWS](https://img.shields.io/badge/AWS-%23FF9900.svg?style=for-the-badge&logo=amazon-aws&logoColor=white) ![Netlify](https://img.shields.io/badge/netlify-%23000000.svg?style=for-the-badge&logo=netlify&logoColor=#00C7B7) ![Google Cloud](https://img.shields.io/badge/Google%20Cloud-%234285F4.svg?style=for-the-badge&logo=google-cloud&logoColor=white) ![Firebase](https://img.shields.io/badge/firebase-%23039BE5.svg?style=for-the-badge&logo=firebase) ![.Net](https://img.shields.io/badge/.NET-5C2D91?style=for-the-badge&logo=.net&logoColor=white) ![MySQL](https://img.shields.io/badge/mysql-%2300f.svg?style=for-the-badge&logo=mysql&logoColor=white) ![Adobe After Effects](https://img.shields.io/badge/Adobe%20After%20Effects-9999FF.svg?style=for-the-badge&logo=Adobe%20After%20Effects&logoColor=white) ![Adobe Photoshop](https://img.shields.io/badge/adobephotoshop-%2331A8FF.svg?style=for-the-badge&logo=adobephotoshop&logoColor=white) ![Blender](https://img.shields.io/badge/blender-%23F5792A.svg?style=for-the-badge&logo=blender&logoColor=white) 	![Figma](https://img.shields.io/badge/figma-%23F24E1E.svg?style=for-the-badge&logo=figma&logoColor=white) ![Adobe Illustrator](https://img.shields.io/badge/adobeillustrator-%23FF9A00.svg?style=for-the-badge&logo=adobeillustrator&logoColor=white) ![Adobe Premiere Pro](https://img.shields.io/badge/Adobe%20Premiere%20Pro-9999FF.svg?style=for-the-badge&logo=Adobe%20Premiere%20Pro&logoColor=white) ![Arduino](https://img.shields.io/badge/-Arduino-00979D?style=for-the-badge&logo=Arduino&logoColor=white) ![TensorFlow](https://img.shields.io/badge/TensorFlow-%23FF6F00.svg?style=for-the-badge&logo=TensorFlow&logoColor=white)
-# 📊 GitHub Stats:
-![](https://github-readme-stats.vercel.app/api?username=MemeGamer&theme=dark&hide_border=true&include_all_commits=false&count_private=false)<br/>
-![](https://github-readme-streak-stats.herokuapp.com/?user=MemeGamer&theme=dark&hide_border=true)<br/>
-![](https://github-readme-stats.vercel.app/api/top-langs/?username=MemeGamer&theme=dark&hide_border=true&include_all_commits=false&count_private=false&layout=compact)
+I build immersive apps for headsets and the browser in Unity and WebXR. I also make the tools around them: computer vision that reads people and poses, and AI tooling that lets agents work inside 3D software. Earlier I built IoT sensors, browser games and gesture interfaces, and I still enjoy anything that turns a camera or a sensor into input.
 
-## 🏆 GitHub Trophies
-![](https://github-profile-trophy.vercel.app/?username=MemeGamer&theme=discord&no-frame=true&no-bg=false&margin-w=4)
+## Selected work
 
-### ✍️ Random Dev Quote
-![](https://quotes-github-readme.vercel.app/api?type=horizontal&theme=radical)
+<table>
+  <tr>
+    <td width="50%" valign="top">
+      <a href="https://github.com/MemeGamer/blendpro-mcp"><img src="assets/blendpro.jpg" alt="Two procedural towers on a rock-strewn terrain, rendered headless by BlendPro from eleven recipe calls" width="100%"></a>
+      <h3><a href="https://github.com/MemeGamer/blendpro-mcp">BlendPro MCP</a></h3>
+      Text-first Blender control for AI agents: scene diffs instead of screenshots, node trees as JSON, 100 tested recipes and MediaPipe pose understanding for characters.
+      <br><br><code>Python</code> <code>Blender</code> <code>MCP</code> <code>MediaPipe</code>
+    </td>
+    <td width="50%" valign="top">
+      <a href="https://aremojibooth.netlify.app/"><img src="assets/ar-booth.jpg" alt="Illustration of a laptop webcam tracking a raised hand, an emoji over the face, a 3-2-1 countdown and a printed photo with a QR code" width="100%"></a>
+      <h3><a href="https://github.com/MemeGamer/AR_Emoji_Photo_Bhooth">AR Emoji Photo Booth</a></h3>
+      A browser photo booth: raise a hand to start the countdown, swipe to change the emoji tracked on your face, then download the photo from a QR code. <a href="https://aremojibooth.netlify.app/">Try it live</a>.
+      <br><br><code>JavaScript</code> <code>MediaPipe</code> <code>WebRTC</code>
+    </td>
+  </tr>
+</table>
 
----
-[![](https://visitcount.itsvg.in/api?id=MemeGamer&icon=0&color=0)](https://visitcount.itsvg.in)
+## Stack
 
-<!-- Proudly created with GPRM ( https://gprm.itsvg.in ) -->
+<table>
+  <tr>
+    <td width="36%" valign="middle">
+      <a href="https://memegamer.github.io/MemeGamer/rack.html">
+        <picture>
+          <source media="(prefers-color-scheme: dark)" srcset="assets/rack-dark.svg">
+          <img alt="Six game cartridges standing in a dock, one per area of the stack" src="assets/rack-light.svg" width="100%">
+        </picture>
+      </a>
+    </td>
+    <td width="64%" valign="middle">
+      Six cartridges, one per area: XR and 3D, languages, vision, web and cloud, design, hardware.
+      <br><br>
+      <a href="https://memegamer.github.io/MemeGamer/rack.html">Open the live figure</a> and hover a cartridge to pull it from the dock.
+    </td>
+  </tr>
+</table>
 
-<!-- Proudly created with GPRM ( https://gprm.itsvg.in ) -->
-<!---
-MemeGamer/MemeGamer is a ✨ special ✨ repository because its `README.md` (this file) appears on your GitHub profile.
-You can click the Preview link to take a look at your changes.
---->
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="assets/stack-dark.svg">
+  <img alt="Tech stack. XR and 3D: Unity, Meta Quest, WebXR, Blender. Languages: C#, C++, C, Python, JavaScript. AI and vision: MediaPipe, OpenCV, TensorFlow. Web and cloud: HTML, CSS, .NET, Firebase, Google Cloud, AWS, Netlify, MySQL. Design: Figma, Photoshop, Illustrator, After Effects, Premiere Pro. Hardware: Arduino, Espressif." src="assets/stack-light.svg" width="100%">
+</picture>
+
+## Earlier projects
+
+| Area | Projects |
+|---|---|
+| Computer vision | [AirCanvas](https://github.com/MemeGamer/AirCanvas), [real-time sign language detection](https://github.com/MemeGamer/Realtime_SignLangageDetection), [YOLO object detection](https://github.com/MemeGamer/RealTime_ObjectDetection_Yolo), [hand gesture recognition in JS](https://github.com/MemeGamer/Hand_gestureRecognition_JS) |
+| IoT and embedded | [Weather station](https://github.com/MemeGamer/Weather_Station_IOT), [pollution detection on NodeMCU](https://github.com/MemeGamer/PollutionDetectio_IOT_NodeMCU), [gesture magic wand on Nano 33 BLE Sense](https://github.com/MemeGamer/MagicWand_nano_ble33_sense) |
+| Unity and WebGL games | [Ludo Online](https://github.com/MemeGamer/LudoOnlineNetlify), [Poker Online](https://github.com/MemeGamer/PokerOnline), [Unity GET and POST requests](https://github.com/MemeGamer/GetNPostRequestUnity) |
+
+## On GitHub
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="assets/stats-dark.svg">
+  <img alt="GitHub stats: years on GitHub, public repositories, stars, followers, new public repositories per year, and languages by code size" src="assets/stats-light.svg" width="100%">
+</picture>
+
+<sub>Every image here lives in this repository. The stats card is regenerated daily by a GitHub Action (<code>scripts/stats.mjs</code>), so nothing depends on an outside service.</sub>
