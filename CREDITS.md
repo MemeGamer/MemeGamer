@@ -1,6 +1,4 @@
 Brand icons in scripts/icons/ (used in the stack panel) are from Simple Icons (https://simpleicons.org), CC0 1.0.
 The hero illustration, the social-link icons and the AR booth illustration were generated with ChatGPT image generation.
 The rack figure (figures/rack.js, docs/rack.html) is built on the Hairline kernel by Lucas Marques (MIT).
-The koi pond animation (koi/pond.gif) is drawn by scripts/koi.py; the idea of an activity-driven koi comes from git-koi (https://github.com/yalongwastaken/git-koi, MIT).
-The koi sprite sheets (swim/eat: assets/src/koi-sheet-raw.png -> assets/koi-sprites.png; U-turn: assets/src/koi-turn-raw.png -> assets/koi-turn.png) were generated with ChatGPT image generation.
-The pond background (assets/pond.png) was generated with ChatGPT image generation.
+The koi pond (koi/pond.gif, koi/palette.json) is drawn by git-koi-pixel (https://github.com/MemeGamer/git-koi-pixel, MIT), which has its own credits.

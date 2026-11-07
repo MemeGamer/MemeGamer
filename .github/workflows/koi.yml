@@ -1,4 +1,4 @@
-# Our koi pond (scripts/koi.py): a pixel-art koi that swims, feeds and grows with public GitHub activity.
+# The koi pond comes from git-koi-pixel (https://github.com/MemeGamer/git-koi-pixel), pinned to v1.0.0.
 name: Koi
 
 on:
@@ -6,7 +6,7 @@ on:
     - cron: "20 0 * * *"   # just after midnight UTC, so the koi reflects the day that just ended
   workflow_dispatch:
   push:
-    paths: [.github/workflows/koi.yml, scripts/koi.py, scripts/koi-palette.json, assets/pond.png, assets/koi-sprites.png, assets/koi-turn.png]
+    paths: [.github/workflows/koi.yml]
 
 permissions:
   contents: write
@@ -18,19 +18,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: MemeGamer/git-koi-pixel@4b2a94d0c4c0394903015ba7073ab302849e759f # v1.0.0
         with:
-          python-version: "3.12"
-      - name: Draw the koi pond
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          GH_USER: ${{ github.repository_owner }}
-        run: |
-          pip install --quiet pillow
-          python scripts/koi.py
+          output: koi/pond.gif
       - name: Commit the pond if it changed
         run: |
-          git add koi/pond.gif
+          git add koi/pond.gif koi/palette.json
           if git diff --cached --quiet; then echo "unchanged"; exit 0; fi
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"

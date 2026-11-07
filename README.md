@@ -72,4 +72,4 @@ I build immersive apps for headsets and the browser in Unity and WebXR. I also m
   <img alt="GitHub stats: years on GitHub, public repositories, stars, followers, new public repositories per year, and languages by code size" src="assets/stats-light.svg" width="100%">
 </picture>
 
-<a href="scripts/koi.py"><img src="koi/pond.gif" width="100%" alt="A pixel-art koi, coloured by my top programming languages, swimming and eating food pellets in a pond with lily pads, lotus flowers and floating leaves"></a>
+<a href="https://github.com/MemeGamer/git-koi-pixel"><img src="koi/pond.gif" width="100%" alt="A pixel-art koi, coloured by my top programming languages, swimming and eating food pellets in a pond with lily pads, lotus flowers and floating leaves"></a>

@@ -35,10 +35,12 @@ const perYear = years.map((y) => repos.filter((r) => new Date(r.createdAt).getUT
 const age = y1 - y0;
 const SKIP = new Set(["ShaderLab", "HLSL", "Makefile", "Batchfile", "Dockerfile"]);
 const bytes = {}, ghColour = {};
-const KOI = JSON.parse(readFileSync(resolve(ROOT, "scripts", "koi-palette.json"), "utf8"));
+// colours come from the koi pond (git-koi-pixel writes koi/palette.json next to the GIF)
+let KOI = { roles: ["patches", "fins", "body sheen"], palette: {} };
+try { KOI = JSON.parse(readFileSync(resolve(ROOT, "koi", "palette.json"), "utf8")); } catch { /* first run: GitHub colours */ }
 for (const r of repos) for (const e of r.languages.edges) if (!SKIP.has(e.node.name)) { bytes[e.node.name] = (bytes[e.node.name] || 0) + e.size; ghColour[e.node.name] = e.node.color; }
 const total = Object.values(bytes).reduce((a, b) => a + b, 0) || 1;
-const langs = Object.entries(bytes).sort((a, b) => b[1] - a[1]).slice(0, 5).map(([n, b]) => [n, (b / total) * 100, KOI.languages[n] || ghColour[n] || "#8b949e"]);
+const langs = Object.entries(bytes).sort((a, b) => b[1] - a[1]).slice(0, 5).map(([n, b]) => [n, (b / total) * 100, KOI.palette[n] || ghColour[n] || "#8b949e"]);
 
 const THEME = {
   light: { fg: "#1f2328", muted: "#59636e", line: "#d1d9e0", accent: "#c4511f" },
