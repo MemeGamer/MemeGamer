@@ -33,17 +33,17 @@
 <circle cx="815.6" cy="177.3" r="2.4" fill="#f0883e"/>
 <circle cx="860.0" cy="177.3" r="2.4" fill="#f0883e"/>
 <text x="460" y="26" font-size="16" fill="#9198a1">new public repositories per year</text>
-<line x1="900.0" y1="44" x2="1115.2" y2="44" stroke="#f0f6fc" stroke-width="3" stroke-linecap="round" opacity="1"/>
-<line x1="1118.2" y1="44" x2="1132.8" y2="44" stroke="#9198a1" stroke-width="3" stroke-linecap="round" opacity="0.86"/>
-<line x1="1135.8" y1="44" x2="1146.5" y2="44" stroke="#9198a1" stroke-width="3" stroke-linecap="round" opacity="0.72"/>
+<line x1="900.0" y1="44" x2="1114.7" y2="44" stroke="#f0f6fc" stroke-width="3" stroke-linecap="round" opacity="1"/>
+<line x1="1117.7" y1="44" x2="1132.3" y2="44" stroke="#9198a1" stroke-width="3" stroke-linecap="round" opacity="0.86"/>
+<line x1="1135.3" y1="44" x2="1146.5" y2="44" stroke="#9198a1" stroke-width="3" stroke-linecap="round" opacity="0.72"/>
 <line x1="1149.5" y1="44" x2="1151.5" y2="44" stroke="#9198a1" stroke-width="3" stroke-linecap="round" opacity="0.58"/>
 <line x1="1154.5" y1="44" x2="1156.5" y2="44" stroke="#9198a1" stroke-width="3" stroke-linecap="round" opacity="0.43999999999999995"/>
 <text x="900" y="82" font-size="18" fill="#f0f6fc">C#</text>
-<text x="1160" y="82" font-size="18" fill="#9198a1" text-anchor="end">83.9%</text>
+<text x="1160" y="82" font-size="18" fill="#9198a1" text-anchor="end">83.7%</text>
 <text x="900" y="110" font-size="18" fill="#f0f6fc">Python</text>
 <text x="1160" y="110" font-size="18" fill="#9198a1" text-anchor="end">6.8%</text>
 <text x="900" y="138" font-size="18" fill="#f0f6fc">JavaScript</text>
-<text x="1160" y="138" font-size="18" fill="#9198a1" text-anchor="end">5.2%</text>
+<text x="1160" y="138" font-size="18" fill="#9198a1" text-anchor="end">5.5%</text>
 <text x="900" y="166" font-size="18" fill="#f0f6fc">CSS</text>
 <text x="1160" y="166" font-size="18" fill="#9198a1" text-anchor="end">1.8%</text>
 <text x="900" y="194" font-size="18" fill="#f0f6fc">SCSS</text>
