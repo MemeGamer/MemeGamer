@@ -8,7 +8,7 @@
   "koi": [
     "#2fa043",
     "#3b7bd4",
-    "#f2c12e"
+    "#7a4fd1"
   ],
   "languages": [
     {
@@ -18,10 +18,6 @@
     {
       "name": "Python",
       "colour": "#3b7bd4"
-    },
-    {
-      "name": "JavaScript",
-      "colour": "#f2c12e"
     },
     {
       "name": "CSS",
@@ -40,12 +36,16 @@
       "colour": "#1d365d"
     },
     {
-      "name": "HTML",
-      "colour": "#e8562a"
+      "name": "JavaScript",
+      "colour": "#f2c12e"
     },
     {
       "name": "C++",
       "colour": "#e24b7d"
+    },
+    {
+      "name": "HTML",
+      "colour": "#e8562a"
     },
     {
       "name": "HLSL",
