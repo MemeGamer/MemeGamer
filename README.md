@@ -18,7 +18,7 @@ I build immersive apps for headsets and the browser in Unity and WebXR. I also m
 <table>
   <tr>
     <td width="50%" valign="top">
-      <a href="https://github.com/MemeGamer/blendpro-mcp"><img src="assets/blendpro.jpg" alt="A pink-glazed donut with slight drips and multicoloured sprinkles on a plate, modeled by BlendPro from reference images" width="100%"></a>
+      <a href="https://github.com/MemeGamer/blendpro-mcp"><img src="assets/blendpro-donut.jpg" alt="A pink-glazed donut with slight drips and multicoloured sprinkles on a plate, modeled by BlendPro from reference images" width="100%"></a>
       <h3><a href="https://github.com/MemeGamer/blendpro-mcp">BlendPro MCP</a></h3>
       Text-first Blender control for AI agents: scene diffs instead of screenshots, node trees as JSON, 104 tested recipes, and a reference-image pipeline that measures views and scores the model against them. The donut above was built that way.
       <br><br><code>Python</code> <code>Blender</code> <code>MCP</code> <code>MediaPipe</code>
