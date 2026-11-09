@@ -32,19 +32,19 @@
 <circle cx="760.0" cy="177.3" r="2.4" fill="#f0883e"/>
 <circle cx="800.0" cy="164.5" r="2.4" fill="#f0883e"/>
 <text x="440" y="26" font-size="16" fill="#9198a1">new public repositories per year</text>
-<line x1="850.0" y1="44" x2="1119.5" y2="44" stroke="#2fa043" stroke-width="4" stroke-linecap="round"/>
-<line x1="1123.5" y1="44" x2="1143.9" y2="44" stroke="#3b7bd4" stroke-width="4" stroke-linecap="round"/>
-<line x1="1147.9" y1="44" x2="1150.9" y2="44" stroke="#7a4fd1" stroke-width="4" stroke-linecap="round"/>
-<line x1="1154.9" y1="44" x2="1157.9" y2="44" stroke="#d4559a" stroke-width="4" stroke-linecap="round"/>
-<line x1="1161.9" y1="44" x2="1164.9" y2="44" stroke="#1d365d" stroke-width="4" stroke-linecap="round"/>
+<line x1="850.0" y1="44" x2="1118.6" y2="44" stroke="#2fa043" stroke-width="4" stroke-linecap="round"/>
+<line x1="1122.6" y1="44" x2="1144.0" y2="44" stroke="#3b7bd4" stroke-width="4" stroke-linecap="round"/>
+<line x1="1148.0" y1="44" x2="1151.0" y2="44" stroke="#7a4fd1" stroke-width="4" stroke-linecap="round"/>
+<line x1="1155.0" y1="44" x2="1158.0" y2="44" stroke="#d4559a" stroke-width="4" stroke-linecap="round"/>
+<line x1="1162.0" y1="44" x2="1165.0" y2="44" stroke="#1d365d" stroke-width="4" stroke-linecap="round"/>
 <rect x="850" y="69" width="14" height="14" rx="3" fill="#2fa043"/>
 <text x="872" y="82" font-size="18" fill="#f0f6fc">C#</text>
 <text x="990" y="82" font-size="14" fill="#9198a1">koi patches</text>
-<text x="1160" y="82" font-size="18" fill="#9198a1" text-anchor="end">87.9%</text>
+<text x="1160" y="82" font-size="18" fill="#9198a1" text-anchor="end">87.6%</text>
 <rect x="850" y="97" width="14" height="14" rx="3" fill="#3b7bd4"/>
 <text x="872" y="110" font-size="18" fill="#f0f6fc">Python</text>
 <text x="990" y="110" font-size="14" fill="#9198a1">koi fins</text>
-<text x="1160" y="110" font-size="18" fill="#9198a1" text-anchor="end">7.6%</text>
+<text x="1160" y="110" font-size="18" fill="#9198a1" text-anchor="end">7.9%</text>
 <rect x="850" y="125" width="14" height="14" rx="3" fill="#7a4fd1"/>
 <text x="872" y="138" font-size="18" fill="#f0f6fc">CSS</text>
 <text x="990" y="138" font-size="14" fill="#9198a1">koi body sheen</text>
@@ -55,5 +55,5 @@
 <rect x="850" y="181" width="14" height="14" rx="3" fill="#1d365d"/>
 <text x="872" y="194" font-size="18" fill="#f0f6fc">Less</text>
 <text x="1160" y="194" font-size="18" fill="#9198a1" text-anchor="end">0.8%</text>
-<text x="850" y="216" font-size="15" fill="#9198a1">koi colour per language, updated 2026-11-08</text></g>
+<text x="850" y="216" font-size="15" fill="#9198a1">koi colour per language, updated 2026-11-09</text></g>
 </svg>
